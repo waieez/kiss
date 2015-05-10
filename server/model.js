@@ -33,10 +33,12 @@ module.exports.get = function (query, cb) {
         return true;
       }
     });
-  } else if (!query['start_date']) {
+  // case if end date provided without start
+  // case if start date provided without end
+  } else if (!query['start_date'] && !query['time_range_length']) {
     //return everything
     result = cache[query['metric_id']];
-  } // case if end date provided
+  }
 
   cb(null, result);
 }
