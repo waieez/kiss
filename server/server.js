@@ -10,7 +10,7 @@ app.use(bodyparser.json());
 app.use(morgan('dev'));
 
 // routes
-app.route('/api/metrics/:id')
+app.route('/api/metrics/:metric_id')
   .get(handlers.get)
   .post(handlers.post)
   .put(handlers.put);

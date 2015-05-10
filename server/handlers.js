@@ -1,3 +1,5 @@
+var model = require('./model');
+
 module.exports = {
   get: get,
   post: post,
@@ -5,7 +7,10 @@ module.exports = {
 };
 
 function get (req, res) {
-  res.json({});
+  req.body['metric_id'] = req.params['metric_id'];
+  model.get(req.body, function (err, result) {
+      res.json({data: result});
+  });
 }
 
 function post (req, res) {
